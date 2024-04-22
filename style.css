@@ -1,0 +1,459 @@
+/* Font Faces */
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-Heavy.ttf");
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-HeavyItalic.ttf");
+    font-weight: 900, italic;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-BoldItalic.ttf");
+    font-weight: 700, italic;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-DemiBold.ttf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-DemiBoldItalic.ttf");
+    font-weight: 600, italic;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-Medium.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-MediumItalic.ttf");
+    font-weight: 500, italic;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-Light.ttf");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-LightItalic.ttf");
+    font-weight: 300, italic;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-ExtraLight.ttf");
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-ExtraLightItalic.ttf");
+    font-weight: 200, italic;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-Thin.ttf");
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "Paralucent";
+    src: url("fonts/Paralucent/ttf/Paralucent-ThinItalic.ttf");
+    font-weight: 100, italic;
+}
+
+/* text styles */ 
+.h1-orange{
+    font-family: Paralucent;
+    font-weight: 600;
+    font-size: 28px;
+    color: #EA5B45;
+}
+
+.h2-orange{
+    font-family: Paralucent;
+    font-weight: 600;
+    font-size: 24px;
+    color: #EA5B45;
+}
+
+.h3-orange{
+    font-family: Paralucent;
+    font-weight: 600;
+    font-size: 21px;
+    color: #EA5B45;
+}
+
+.h4-orange{
+    font-family: Paralucent;
+    font-weight: 600;
+    font-size: 18px;
+    color: #EA5B45;
+}
+
+.body-orange{
+    font-family: Paralucent;
+    font-weight: 300;
+    font-size: 16px;
+    color: #EA5B45;
+}
+
+.caption-orange{
+    font-family: Paralucent;
+    font-weight: 300;
+    font-size: 14px;
+    color: #EA5B45;
+}
+
+.footnote-orange{
+    font-family: Paralucent;
+    font-weight: 300;
+    font-size: 12px;
+    color: #EA5B45;
+}
+
+.h1-white{
+    font-family: Paralucent;
+    font-weight: 600;
+    font-size: 28px;
+    color: #FFFFFF;
+}
+
+.h2-white{
+    font-family: Paralucent;
+    font-weight: 600;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.h3-white{
+    font-family: Paralucent;
+    font-weight: 600;
+    font-size: 21px;
+    color: #FFFFFF;
+}
+
+.h4-white{
+    font-family: Paralucent;
+    font-weight: 600;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.body-white{
+    font-family: Paralucent;
+    font-weight: 300;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.caption-white{
+    font-family: Paralucent;
+    font-weight: 300;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.footnote-white{
+    font-family: Paralucent;
+    font-weight: 300;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+/* body styles */
+body{
+    background-color: #1E1E1E;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container{
+    background-image: url(images/background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    background-color: #06060C;
+    padding: 0px 16px 0px 16px;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+}
+
+/* header style */
+.header{
+    background: linear-gradient(180deg, rgba(6,6,12,1) 38%, rgba(6,6,12,0.5019257703081232) 66%, rgba(6,6,12,0) 100%);
+    width: 100%;
+    display: flex;
+    height: 100%;
+    max-height: 120px;
+    padding: 16px;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin: 0px -16px 0px -16px;
+    padding: 0px 16px 0px 16px;
+    top: 0;
+    z-index: 1;
+    max-width: 600px;
+}
+
+.sticky {
+  position: fixed;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
+.header-logo-btn{
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin: auto;
+    width: auto;
+}
+
+.header-logo-icon{
+    width: 90px;
+    height: 54.45px;
+}
+
+.header-menu-icon{
+    height: 80%;
+    width: 80%;
+    padding: 3px;
+    box-sizing: border-box;
+    margin: 0px 0px 0px 16px
+}
+
+/* icon button styles */
+.orange-fill-btn-xl{
+    height: 50px;
+    width: 50px;
+    border-radius: 80%;
+    border: none;
+    background-color: #EA5B45;
+    cursor: pointer;
+    box-shadow: 0px 3px 3px rgb(0, 0, 0, 0.3);
+}
+
+.no-fill-btn-l{
+    height: 40px;
+    width: 40px;
+    border-radius: 80%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* icon styles */
+.play-icon-xl{
+    height: 60%;
+    width: 60%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.white-stroke-icon-l{
+    height: 80%;
+    width: 80%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.flip-icon-xl{
+    height: 80%;
+    width: 80%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+/* flip card design */
+.flip-card-container{
+    padding: 0px 16px 0px 16px;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 16px 0px;
+}
+
+.flip-card{
+    width: 100vw;
+    max-width: 318px;
+    height: auto;
+    border-radius: 15px;
+    aspect-ratio: 2.125 / 3.370;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.50);
+}
+
+.card-face{
+    width: 100%;
+    height: 100%;
+}
+
+.card-front{
+    background-image: url(media/card.png);
+    background-size: contain;
+    padding: 16px 16px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    border-radius: 15px;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    backface-visibility: hidden;
+}
+
+.card-back{
+    padding: 16px 16px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: #06060C;
+    justify-content: space-between;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+}
+
+.card-back-details{
+    margin: 0px 0px 16px 0px;
+}
+
+.flip-card.active{
+    transform: perspective(700px) rotateY(180deg);
+}
+
+/* song details */
+.player-details{
+    text-align: center;
+    margin: 0px 0px 4px 0px;
+}
+
+
+/* player */
+.player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.player-controls{
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 16px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
+/* music controls */
+#progress{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background-color: #EA5B45;
+    border-radius: 4px;
+    margin: 16px 0px;
+} 
+
+#progress::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background-color: #FFFFFF;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+}
+
+.controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 150px;
+}
+
+/* categories */
+.categories{
+    max-width: 360px;
+    overflow-x: scroll;
+    left: 0;
+    padding: 0px 16px;
+    box-sizing: border-box;
+}
+
+.categories::-webkit-scrollbar {
+    display: none;
+}
+
+.categories {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.category-btn{
+    font-family: Paralucent;
+    font-weight: 300;
+    font-size: 16px;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 30px;
+    padding: 6px 12px;
+    margin: 0px 6px 6px 0px;
+    background-color: #343434;
+}
+
+.category-btn-selected{
+    color: #EA5B45;
+    font-weight: 600;
+}
