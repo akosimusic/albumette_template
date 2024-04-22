@@ -183,6 +183,10 @@
 }
 
 /* body styles */
+html{
+    -webkit-text-size-adjust: 100%; /*responsive text to safari*/
+}
+
 body{
     background-color: #1E1E1E;
     margin: 0px;
