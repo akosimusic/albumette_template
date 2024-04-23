@@ -1,6 +1,16 @@
 <html lang="en">
 
     <head>
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-NKW9LS6M');
+        </script>
+        <!-- End Google Tag Manager -->
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Candy - akosimusic.ph</title>
@@ -9,12 +19,60 @@
     </head>
 
     <body>
-        <div class="container">
-            <div class="header" id="header">
-                <button class="header-menu-btn no-fill-btn-l"><image src="svg/menu.svg" class="header-menu-icon"></button>
-                <button class="header-logo-btn"><image src="logo/beta white.svg" class="header-logo-icon"></button>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKW9LS6M"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        <div id="overlay-menu" class="overlay-menu">
+
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <button class="no-fill-btn-l" id="close-menu-btn"><image class="header-menu-icon" src="svg/close.svg"></image></button>
+                </div>
+                
+                <div class="overlay-box overlay-about">
+                    <image src="logo/logo gradient.svg" class="overlay-about-logo"></image>
+                    <div class="caption-white overlay-about-text">
+                        <b>About akosimusic.ph</b><br>
+                        akosimusic.ph is a physical music distribution company that invests on the
+                        rise of the creative industries in the market, merging with technology. It 
+                        is a brand that circulates music through tangible collectible items that 
+                        engage with its customers.
+                    </div>
+                    <div class="overlay-btn-container">
+                        <div class="overlay-form-btn" id="error-form-btn">Learn More <image src="svg/arrow right.svg" class="arrow-right-icon-m"></image></div>
+                    </div>
+                </div>
+
+                <div class="overlay-box overlay-forms">
+                    <div class="overlay-heading h2-orange">Your feedback matters to us!</div>
+                    <div class="overlay-subheading caption-white">Report any issues or share us your thoughts.</div>
+                    <div class="overlay-btn-container">
+                        <div class="overlay-form-btn" id="error-form-btn">Error Form <image src="svg/arrow right.svg" class="arrow-right-icon-m"></image></div>
+                        <div class="overlay-form-btn" id="feedback-form-btn">Feedback Form <image src="svg/arrow right.svg" class="arrow-right-icon-m"></image></div>
+                    </div>
+                </div>
+                
+                <div class="overlay-box overlay-socials">
+                    <div class="overlay-heading h2-orange">Connect with us!</div>
+                    <div class="overlay-subheading caption-white">Keep in touch and stay updated.</div>
+                    <div class="overlay-socials-container">
+                        <button class="overlay-socials-btn"><image src="svg/facebook.svg" class="facebook-icon-s"></image> Facebook</button>
+                        <button class="overlay-socials-btn"><image src="svg/insta.svg" class="instagram-icon-s"></image> Instagram</button>
+                        <button class="overlay-socials-btn"><image src="svg/mail.svg" class="mail-icon-s"></image> akosimusic8@gmail.com</button>
+                    </div>
+                </div>
             </div>
+
+        </div>
+
+        <div class="header" id="header">
+            <button class="header-menu-btn no-fill-btn-l" id="open-menu-btn"><image src="svg/menu.svg" class="header-menu-icon"></button>
+            <button class="header-logo-btn"><image src="logo/beta white.svg" class="header-logo-icon"></button>
+        </div>
         
+        <div class="container">
             <div class="player">
                 <div class="flip-card-container">
                     <div class="flip-card" id="flip-card">
@@ -66,14 +124,151 @@
                     </div>
                 </div>
 
-                <div class="categories">
-                    <button class="category-btn">Artist</button>
-                    <button class="category-btn">Lyrics</button>
-                    <button class="category-btn">Music</button>
-                    <button class="category-btn">Videos</button>
+                <div class="player-categories">
+                    <div class="categories">
+                        <button class="category-btn" id="artist-category-btn">Artist</button>
+                        <button class="category-btn" id="lyrics-category-btn">Lyrics</button>
+                        <button class="category-btn" id="music-category-btn">Music</button>
+                        <button class="category-btn" id="video-category-btn">Videos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="player-content">
+            <div class="content-artist hidden-content" id="artist-category-content">
+                <div class="artist-profile">
+                    <image class="artist-profile-photo" src="media/profile.jpg">
+                    <div class="artist-profile-details">
+                        <div class="h3-white">ako si</div>
+                        <div class="h1-orange artist-name">Franco Emil</div>
+                        <div class="artist-social-media">
+                            <div class="artist-facebook artist-social-link">
+                                <button class="orange-fill-btn-s"><image src="svg/facebook.svg" class="facebook-icon-s"></image></button>
+                                <div class="facebook-hyperlink footnote-white">Facebook</div>
+                            </div>
+                            <div class="artist-instagram artist-social-link">
+                                <button class="orange-fill-btn-s"><image src="svg/insta.svg" class="instagram-icon-s"></image></button>
+                                <div class="instagram-hyperlink footnote-white">Instagram</div>
+                            </div>
+                            <div class="artist-spotify artist-social-link">
+                                <button class="orange-fill-btn-s"><image src="svg/spotify.svg" class="spotify-icon-s"></image></button>
+                                <div class="spotify-hyperlink footnote-white">Spotify</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="artist-description caption-white">
+                    Franco Emil is a music product, composer, and guitarist whose wide musical taste ranges from the classical and folk to the eclectic sounds of jazz, pop, 
+                    and electronica. His influences developed from his artistry for film score, sound design, and exploration of collaborations among artists with varied 
+                    backgrounds. Apart from this, his is also the lead guitarist and one of the composers and arrangers of the band Why July. He debuted his first instrumental, 
+                    lo-fi album “My Side” in 2021 and his latest solo release is an EP entitled “Here I Am”.
+                </div>
+            </div>
+
+            <div class="content-lyrics hidden-content" id="lyrics-category-content">
+                <div class="lyrics-title h4-orange">Candy Lyrics</div>
+                    <div class="lyrics-content caption-white">
+                        Writing this on a breezy Friday <br>
+                        Typing this on my keyboard, it's my way <br>
+                        Just a taste and my heart start beating <br>
+                        Bursting colors in my room and I'm seeing <br>
+                        Strawberry skies <br>
+                        Candy castle in your eyes <br>
+                        Looking good in that pretty red sweater <br>
+                        I ain't SUGA but I'm dreaming <br>
+                        I bet it's like a candy <br>
+                        It's so sweet <br>
+                        Like a glazed lollipop <br>
+                        I want it <br>
+                        Your smile is like soda pop <br>
+                        So bubbly <br>
+                        Sugar rush inside me <br>
+                        Makes me so happy <br>
+                        Candy <br>
+                        It's so sweet <br>
+                        Like it's made of honey <br>
+                        I want it <br>
+                        Butterflies around me <br>
+                        I'm carefree <br>
+                        Sugar rush inside me <br>
+                        My sweet Candy <br>
+                        I hope you know <br>
+                        You're beautiful just as you are <br>
+                        Can't get enough of this fantasy <br>
+                        My Vanellope <br>
+                        I'm like a kid in this arcade <br>
+                        But how does it feel <br>
+                        To be loved by someone like you <br>
+                        I wanna know, or maybe no <br>
+                        Gummy bears, M&Ms, and everything nice <br>
+                        It's like a <br>
+                        Candy <br>
+                        It's so sweet <br>
+                        Like a glazed lollipop <br>
+                        I want it <br>
+                        Your smile is like soda pop <br>
+                        So bubbly <br>
+                        Sugar rush inside me <br>
+                        Makes me so happy <br>
+                        It's so sweet <br>
+                        I want it <br>
+                        I'm carefree <br>
+                        My sweet Candy <br>
+                        I bet it's like a candy <br>
+                        It's so sweet <br>
+                        Like a glazed lollipop <br>
+                        I want it <br>
+                        Your smile is like soda pop <br>
+                        So bubbly <br>
+                        Sugar rush inside me <br>
+                        Makes me so happy <br>
+                        Candy <br>
+                        It's so sweet <br>
+                        Like it's made of honey <br>
+                        I want it <br>
+                        Butterflies around me <br>
+                        I'm carefree <br>
+                        Sugar rush inside me <br>
+                        My sweet Candy <br>
+                    </div>
+            </div>
+
+            <div class="content-music hidden-content" id="music-category-content">
+                <div class="music-title">
+                    <div class="music-heading h4-orange">Music</div>
+                    <div class="music-subheading body-white">Discover and stream Franco Emil's music.</div>
+                </div>
+
+                <div class="music-gallery">
+
+                </div>
+            </div>
+
+            <div class="content-video hidden-content" id="video-category-content">
+                <div class="video-title">
+                    <div class="video-heading h4-orange">Videos</div>
+                </div>
+
+                <div class="video-gallery">
+                    <div class="video-placeholder">
+                        <image class="video-thumbnail" src="media/thumbnail.png"></image>
+                        <div class="video-title body-white">Candy - Franco Emil (Lyric Video)</div>
+                        <div class="video-upload-date caption-white">2022 February 22</div>
+                    </div>
+
+                    <div class="video-placeholder">
+                        <image class="video-thumbnail" src="media/thumbnail.png"></image>
+                        <div class="video-title body-white">Candy - Franco Emil (Lyric Video)</div>
+                        <div class="video-upload-date caption-white">2022 February 22</div>
+                    </div>
                 </div>
             </div>
         </div>
         
+        <div class="footer">
+
+        </div>
     </body>
 </html>

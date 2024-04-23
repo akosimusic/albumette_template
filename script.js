@@ -1,18 +1,3 @@
-/* Header */
-window.onscroll = function() {myFunction()}
-
-var header = document.getElementById("header")
-
-var sticky = header.offsetTop
-
-function myFunction() {
-  if (window.scrollY > sticky) {
-    header.classList.add("sticky")
-  } else {
-    header.classList.remove("sticky")
-  }
-}
-
 /* Music Player Controls */
 let progress = document.getElementById("progress")
 let song = document.getElementById("song")
@@ -63,3 +48,95 @@ cardFrontFlipBtn.addEventListener("click", () => {
 cardBackFlipBtn.addEventListener("click", () => {
     flipCard.classList.toggle("active")
 } )
+
+/* Categories */
+const artistCategoryBtn = document.getElementById("artist-category-btn")
+const lyricsCategoryBtn = document.getElementById("lyrics-category-btn")
+const musicCategoryBtn = document.getElementById("music-category-btn")
+const videoCategoryBtn = document.getElementById("video-category-btn")
+
+const artistCategoryContent = document.getElementById("artist-category-content")
+const lyricsCategoryContent = document.getElementById("lyrics-category-content")
+const musicCategoryContent = document.getElementById("music-category-content")
+const videoCategoryContent = document.getElementById("video-category-content")
+
+artistCategoryBtn.addEventListener("click", () => {
+    if (artistCategoryBtn.classList.contains("category-btn-selected")){
+        artistCategoryContent.classList.add("hidden-content")
+        artistCategoryBtn.classList.remove("category-btn-selected")
+    } else {
+        lyricsCategoryContent.classList.add("hidden-content")
+        musicCategoryContent.classList.add("hidden-content")
+        videoCategoryContent.classList.add("hidden-content")
+        artistCategoryContent.classList.remove("hidden-content")
+
+        lyricsCategoryBtn.classList.remove("category-btn-selected")
+        musicCategoryBtn.classList.remove("category-btn-selected")
+        videoCategoryBtn.classList.remove("category-btn-selected")
+        artistCategoryBtn.classList.add("category-btn-selected")
+    }
+})
+
+lyricsCategoryBtn.addEventListener("click", () => {
+    if (lyricsCategoryBtn.classList.contains("category-btn-selected")){
+        lyricsCategoryContent.classList.add("hidden-content")
+        lyricsCategoryBtn.classList.remove("category-btn-selected")
+    } else {
+        artistCategoryContent.classList.add("hidden-content")
+        musicCategoryContent.classList.add("hidden-content")
+        videoCategoryContent.classList.add("hidden-content")
+        lyricsCategoryContent.classList.remove("hidden-content")
+
+        artistCategoryBtn.classList.remove("category-btn-selected")
+        musicCategoryBtn.classList.remove("category-btn-selected")
+        videoCategoryBtn.classList.remove("category-btn-selected")
+        lyricsCategoryBtn.classList.add("category-btn-selected")
+    }
+})
+
+musicCategoryBtn.addEventListener("click", () => {
+
+    if (musicCategoryBtn.classList.contains("category-btn-selected")){
+        musicCategoryContent.classList.add("hidden-content")
+        musicCategoryBtn.classList.remove("category-btn-selected")
+    } else {
+        artistCategoryContent.classList.add("hidden-content")
+        lyricsCategoryContent.classList.add("hidden-content")
+        videoCategoryContent.classList.add("hidden-content")
+        musicCategoryContent.classList.remove("hidden-content")
+
+        artistCategoryBtn.classList.remove("category-btn-selected")
+        lyricsCategoryBtn.classList.remove("category-btn-selected")
+        videoCategoryBtn.classList.remove("category-btn-selected")
+        musicCategoryBtn.classList.add("category-btn-selected")
+    }
+})
+
+videoCategoryBtn.addEventListener("click", () => {
+    if (videoCategoryBtn.classList.contains("category-btn-selected")){
+        videoCategoryContent.classList.add("hidden-content")
+        videoCategoryBtn.classList.remove("category-btn-selected")
+    } else {
+        artistCategoryContent.classList.add("hidden-content")
+        lyricsCategoryContent.classList.add("hidden-content")
+        musicCategoryContent.classList.add("hidden-content")
+        videoCategoryContent.classList.remove("hidden-content")
+
+        artistCategoryBtn.classList.remove("category-btn-selected")
+        lyricsCategoryBtn.classList.remove("category-btn-selected")
+        musicCategoryBtn.classList.remove("category-btn-selected")
+        videoCategoryBtn.classList.add("category-btn-selected")
+    }
+})
+
+/* Menu Controls */
+const openMenuBtn = document.getElementById("open-menu-btn")
+const closeMenuBtn = document.getElementById("close-menu-btn")
+
+openMenuBtn.addEventListener("click", () => {
+    document.getElementById("overlay-menu").style.height = "100%"
+})
+
+closeMenuBtn.addEventListener("click", () => {
+    document.getElementById("overlay-menu").style.height = "0%"
+})
