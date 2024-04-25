@@ -306,11 +306,11 @@ body{
     max-width: 360px;
     display: flex;
     flex-direction: column;
-    background-color: #06060C;
+    background-color: #15151D;
     padding: 12px;
     gap: 12px;
     border-radius: 8px;
-    box-shadow: 0px 2px 6px 0px rgb(0, 0, 0, 0.50);
+    box-shadow: 0px 3px 3px 1px rgb(0, 0, 0, 0.30);
 }
 
 .overlay-about-logo{
@@ -634,6 +634,10 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    height: 100%;
 }
 
 .artist-profile{
@@ -685,6 +689,10 @@ body{
     display: flex;
     flex-direction: column;
     gap: 12px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    height: 100%;
 }
 
 /* content-lyrics */
@@ -694,6 +702,10 @@ body{
     display: flex;
     flex-direction: column;
     gap: 12px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    height: 100%;
 }
 
 /* video content style */
@@ -703,12 +715,16 @@ body{
     display: flex;
     flex-direction: column;
     gap: 16px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    height: 100%;
 }
 
 .video-gallery{
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
 }
 
 .video-placeholder{
@@ -730,7 +746,74 @@ body{
     font-weight: 600;
 }
 
+/* video content youtube pop-up */
+.youtube-video-popup{
+    height: 0;
+    width: 100%;
+    max-width: 600px;
+    position: fixed; /* Stay in place */
+    z-index: 2;
+    top: 0;
+    background-color: rgba(0,0,0, 0.80);
+    overflow-x: hidden;
+    transition: 0.5s;
+    scrollbar-width: none;
+}
+
+.video-popup-container{
+    padding: 40px 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.youtube-video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-width: 600px;
+}
+
+.youtube-video-container{
+    width: 100%;
+}
+
+.popup-header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 6px 0px 6px 0px;
+    box-sizing: border-box;
+    background-color: #343434;
+    border-radius: 12px 12px 0px 0px;
+    justify-content: flex-start;
+}
+
+.popup-footer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    background-color: #343434;
+    border-radius: 0px 0px 12px 12px;
+    justify-content: center;
+}
+
+.videos-more-btn{
+    background: none;
+    border: transparent;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
 /* hide content */
 .hidden-content{
     display: none;
+    height: 0;
 }

@@ -140,3 +140,68 @@ openMenuBtn.addEventListener("click", () => {
 closeMenuBtn.addEventListener("click", () => {
     document.getElementById("overlay-menu").style.height = "0%"
 })
+
+/* YouTube API Integrations */
+
+fetch('https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=UU2VRbK74uiqa90HtJXrXm7w&key=AIzaSyAz3o1mkFqwGFTyScUJ_KVwnQ76S3ouPVo')
+.then(res =>{
+    return res.json()
+})
+.then (data =>{
+    data.items.forEach(curr=>{
+        videoTitle = curr.snippet.title
+        videoId = curr.snippet.resourceId.videoId
+        videoURL = "https://www.youtube.com/watch?v=" + curr.snippet.resourceId.videoId
+        videoThumbnail = curr.snippet.thumbnails.maxres.url
+        videoUploadTimeStamp = new Date(curr.snippet.publishedAt).getTime()
+
+        videoUploadDay = new Date(videoUploadTimeStamp).getDate()
+        switch (new Date(videoUploadTimeStamp).getMonth() + 1){
+            case 0:
+                videoUploadMonth = "January"
+                break;
+            case 1:
+                videoUploadMonth = "February"
+                break;
+            case 2:
+                videoUploadMonth = "March"
+                break;
+            case 3:
+                videoUploadMonth = "April"
+                break;
+            case 4:
+                videoUploadMonth = "May"
+                break;
+            case 5:
+                videoUploadMonth = "June"
+                break;
+            case 6:
+                videoUploadMonth = "July"
+                break;
+            case 7:
+                videoUploadMonth = "August"
+                break;
+            case 8:
+                videoUploadMonth = "September"
+                break;
+            case 9:
+                videoUploadMonth = "October"
+                break;
+            case 10:
+                videoUploadMonth = "November"
+                break;
+            case 11:
+                videoUploadMonth = "December"
+                break;
+        }
+        videoUploadYear = new Date(videoUploadTimeStamp).getFullYear()
+
+        markupVideoGallery = `<div class="video-placeholder">
+                                <a style="text-decoration: none" href='${videoURL}' target='_blank'><image class="video-thumbnail" src=${videoThumbnail}></image></a>
+                                <a style="text-decoration: none" href='${videoURL}' target='_blank'><div class="video-title body-white">${videoTitle}</div></a>
+                                <div class="video-upload-date caption-white">${videoUploadYear} ${videoUploadMonth} ${videoUploadDay}</div>
+                            </div>`
+
+        document.querySelector('div.video-gallery').insertAdjacentHTML('beforeend',markupVideoGallery)
+    })
+})
