@@ -1,3 +1,63 @@
+/* Javascript Cookies, Local Storage, and Session Storage */
+
+//console.log(navigator.cookieEnabled) //-- used to check if there are cookies, create a if statement function to ask cookie permissions 
+
+let accessCookie = true 
+
+window.onload = () => {
+    if (performance.getEntriesByType("navigation")[0].type === "navigate") {
+        localStorage.setItem('userAccess',"granted")
+    } else if (performance.getEntriesByType("navigation")[0].type !== "navigate"){
+        localStorage.setItem('userAccess',"denied")
+    }
+
+    if (accessCookie === false && localStorage.getItem('userAccess') === "denied"){
+        //the user's access has expired and that user's POE is NOT via NFC Card
+        document.getElementById("overlay-menu").style.height = "100%"
+    } else if (accessCookie === false && localStorage.getItem('userAccess') === "granted"){
+        //the user's access has expired but the user's POE is via NFC Card
+        console.log("Created a new user access cookie. Welcome back!")
+        setAccessCookie("albumetteAccess","granted",6)
+    } else if (accessCookie === true && localStorage.getItem('userAccess') === "denied"){ 
+        //the user's access has not expired but the user's POE is NOT via NGC Card
+    } else if (accessCookie === true && localStorage.getItem('userAccess') === "granted"){ 
+        //the user's access has not expired and the user's POE is via NGC Card
+        console.log("Welcome to Akosi Music! You have 6 minutes to explore the app until you need to tap the NGC card again!")
+        setAccessCookie("albumetteAccess","granted",6)
+    }
+}
+
+function setAccessCookie(name, value, minutes){
+    const currDate = new Date();
+    currDate.setTime(currDate.getTime() + (1000 * 60 * minutes))
+    let expirationDate = "expires=" + currDate.toUTCString()
+    document.cookie = `${name}=${value}; ${expirationDate}; path=/`
+    accessCookie = true
+}
+
+function getCookie(name){
+    const cookieDecoded = decodeURIComponent(document.cookie)
+    const cookieArray = cookieDecoded.split("; ")
+    let result
+
+    cookieArray.forEach(element => {
+        if(element.indexOf(name) == 0){
+            result = element.substring(name.length + 1)
+        }
+    })
+
+    return result
+}
+
+let cookieChecker = setInterval(() => {
+    if (getCookie("albumetteAccess") !== "granted"){
+        accessCookie = false
+        document.getElementById("overlay-menu").style.height = "0%"
+        clearInterval(cookieChecker)
+    }
+}, 1000)
+
+
 /* Music Player Controls */
 let progress = document.getElementById("progress")
 let song = document.getElementById("song")
@@ -205,3 +265,4 @@ fetch('https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxR
         document.querySelector('div.video-gallery').insertAdjacentHTML('beforeend',markupVideoGallery)
     })
 })
+
