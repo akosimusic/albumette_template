@@ -14,9 +14,10 @@ window.onload = () => {
     if (accessCookie === false && localStorage.getItem('userAccess') === "denied"){
         //the user's access has expired and that user's POE is NOT via NFC Card
         console.log(accessCookie + localStorage.getItem('userAccess'))
-        document.getElementById("overlay-menu").style.height = "100%"
+        document.getElementById("popup-notifications").style.height = "100%"
     } else if (accessCookie === false && localStorage.getItem('userAccess') === "granted"){
         //the user's access has expired but the user's POE is via NFC Card
+        document.getElementById("popup-notifications").style.height = "100%"
         console.log(accessCookie + localStorage.getItem('userAccess'))
         setAccessCookie("albumetteAccess","granted",6)
     } else if (accessCookie === true && localStorage.getItem('userAccess') === "denied"){ 
@@ -54,7 +55,7 @@ function getCookie(name){
 let cookieChecker = setInterval(() => {
     if (getCookie("albumetteAccess") !== "granted"){
         accessCookie = false
-        document.getElementById("overlay-menu").style.height = "0%"
+        document.getElementById("popup-notifications").style.height = "100%"
         clearInterval(cookieChecker)
     }
 }, 1000)
