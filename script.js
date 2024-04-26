@@ -13,16 +13,18 @@ window.onload = () => {
 
     if (accessCookie === false && localStorage.getItem('userAccess') === "denied"){
         //the user's access has expired and that user's POE is NOT via NFC Card
+        console.log(accessCookie + localStorage.getItem('userAccess'))
         document.getElementById("overlay-menu").style.height = "100%"
     } else if (accessCookie === false && localStorage.getItem('userAccess') === "granted"){
         //the user's access has expired but the user's POE is via NFC Card
-        console.log("Created a new user access cookie. Welcome back!")
+        console.log(accessCookie + localStorage.getItem('userAccess'))
         setAccessCookie("albumetteAccess","granted",6)
     } else if (accessCookie === true && localStorage.getItem('userAccess') === "denied"){ 
         //the user's access has not expired but the user's POE is NOT via NGC Card
+        console.log(accessCookie + localStorage.getItem('userAccess'))
     } else if (accessCookie === true && localStorage.getItem('userAccess') === "granted"){ 
         //the user's access has not expired and the user's POE is via NGC Card
-        console.log("Welcome to Akosi Music! You have 6 minutes to explore the app until you need to tap the NGC card again!")
+        console.log(accessCookie + localStorage.getItem('userAccess'))
         setAccessCookie("albumetteAccess","granted",6)
     }
 }
