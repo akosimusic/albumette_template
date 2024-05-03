@@ -14,14 +14,13 @@ window.onload = () => {
         document.getElementById("popup-notifications").style.height = "100%"
     } else if (accessCookie === false && sessionStorage.getItem('userAccess') === "granted"){
         //the user's access has expired but the user's POE is via NFC Card
-        document.getElementById("popup-notifications").style.height = "100%"
-        console.log(accessCookie + sessionStorage.getItem('userAccess'))
         setAccessCookie("albumetteAccess","granted",6)
+        console.log(accessCookie + sessionStorage.getItem('userAccess'))
     } else if (accessCookie === true && sessionStorage.getItem('userAccess') === "denied"){ 
-        //the user's access has not expired but the user's POE is NOT via NGC Card
+        //the user's access has not expired but the user's POE is NOT via NFC Card
         console.log(accessCookie + sessionStorage.getItem('userAccess'))
     } else if (accessCookie === true && sessionStorage.getItem('userAccess') === "granted"){ 
-        //the user's access has not expired and the user's POE is via NGC Card
+        //the user's access has not expired and the user's POE is via NFC Card
         console.log(accessCookie + sessionStorage.getItem('userAccess'))
         setAccessCookie("albumetteAccess","granted",6)
     }
