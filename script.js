@@ -3,25 +3,25 @@ let accessCookie = true
 
 window.onload = () => {
     if (performance.getEntriesByType("navigation")[0].type === "navigate") {
-        sessionStorage.setItem('userAccess',"granted")
+        localStorage.setItem('userAccess',"granted")
     } else if (performance.getEntriesByType("navigation")[0].type !== "navigate"){
-        sessionStorage.setItem('userAccess',"denied")
+        localStorage.setItem('userAccess',"denied")
     }
 
-    if (accessCookie === false && sessionStorage.getItem('userAccess') === "denied"){
+    if (accessCookie === false && localStorage.getItem('userAccess') === "denied"){
         //the user's access has expired and that user's POE is NOT via NFC Card
-        console.log(accessCookie + sessionStorage.getItem('userAccess'))
+        console.log(accessCookie + localStorage.getItem('userAccess'))
         document.getElementById("popup-notifications").style.height = "100%"
-    } else if (accessCookie === false && sessionStorage.getItem('userAccess') === "granted"){
+    } else if (accessCookie === false && localStorage.getItem('userAccess') === "granted"){
         //the user's access has expired but the user's POE is via NFC Card
         setAccessCookie("albumetteAccess","granted",6)
-        console.log(accessCookie + sessionStorage.getItem('userAccess'))
-    } else if (accessCookie === true && sessionStorage.getItem('userAccess') === "denied"){ 
+        console.log(accessCookie + localStorage.getItem('userAccess'))
+    } else if (accessCookie === true && localStorage.getItem('userAccess') === "denied"){ 
         //the user's access has not expired but the user's POE is NOT via NFC Card
-        console.log(accessCookie + sessionStorage.getItem('userAccess'))
-    } else if (accessCookie === true && sessionStorage.getItem('userAccess') === "granted"){ 
+        console.log(accessCookie + localStorage.getItem('userAccess'))
+    } else if (accessCookie === true && localStorage.getItem('userAccess') === "granted"){ 
         //the user's access has not expired and the user's POE is via NFC Card
-        console.log(accessCookie + sessionStorage.getItem('userAccess'))
+        console.log(accessCookie + localStorage.getItem('userAccess'))
         setAccessCookie("albumetteAccess","granted",6)
     }
 }
@@ -52,7 +52,7 @@ let cookieChecker = setInterval(() => {
     if (getCookie("albumetteAccess") !== "granted"){
         accessCookie = false
         document.getElementById("popup-notifications").style.height = "100%"
-        console.log(accessCookie + sessionStorage.getItem('userAccess'))
+        console.log(accessCookie + localStorage.getItem('userAccess'))
         clearInterval(cookieChecker)
     }
 }, 1000)
