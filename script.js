@@ -1,31 +1,28 @@
 /* Javascript Cookies, Local Storage, and Session Storage */
-
-//console.log(navigator.cookieEnabled) //-- used to check if there are cookies, create a if statement function to ask cookie permissions 
-
-let accessCookie = true 
+let accessCookie = true
 
 window.onload = () => {
     if (performance.getEntriesByType("navigation")[0].type === "navigate") {
-        localStorage.setItem('userAccess',"granted")
+        sessionStorage.setItem('userAccess',"granted")
     } else if (performance.getEntriesByType("navigation")[0].type !== "navigate"){
-        localStorage.setItem('userAccess',"denied")
+        sessionStorage.setItem('userAccess',"denied")
     }
 
-    if (accessCookie === false && localStorage.getItem('userAccess') === "denied"){
+    if (accessCookie === false && sessionStorage.getItem('userAccess') === "denied"){
         //the user's access has expired and that user's POE is NOT via NFC Card
-        console.log(accessCookie + localStorage.getItem('userAccess'))
+        console.log(accessCookie + sessionStorage.getItem('userAccess'))
         document.getElementById("popup-notifications").style.height = "100%"
-    } else if (accessCookie === false && localStorage.getItem('userAccess') === "granted"){
+    } else if (accessCookie === false && sessionStorage.getItem('userAccess') === "granted"){
         //the user's access has expired but the user's POE is via NFC Card
         document.getElementById("popup-notifications").style.height = "100%"
-        console.log(accessCookie + localStorage.getItem('userAccess'))
+        console.log(accessCookie + sessionStorage.getItem('userAccess'))
         setAccessCookie("albumetteAccess","granted",6)
-    } else if (accessCookie === true && localStorage.getItem('userAccess') === "denied"){ 
+    } else if (accessCookie === true && sessionStorage.getItem('userAccess') === "denied"){ 
         //the user's access has not expired but the user's POE is NOT via NGC Card
-        console.log(accessCookie + localStorage.getItem('userAccess'))
-    } else if (accessCookie === true && localStorage.getItem('userAccess') === "granted"){ 
+        console.log(accessCookie + sessionStorage.getItem('userAccess'))
+    } else if (accessCookie === true && sessionStorage.getItem('userAccess') === "granted"){ 
         //the user's access has not expired and the user's POE is via NGC Card
-        console.log(accessCookie + localStorage.getItem('userAccess'))
+        console.log(accessCookie + sessionStorage.getItem('userAccess'))
         setAccessCookie("albumetteAccess","granted",6)
     }
 }
@@ -56,6 +53,7 @@ let cookieChecker = setInterval(() => {
     if (getCookie("albumetteAccess") !== "granted"){
         accessCookie = false
         document.getElementById("popup-notifications").style.height = "100%"
+        console.log(accessCookie + sessionStorage.getItem('userAccess'))
         clearInterval(cookieChecker)
     }
 }, 1000)
