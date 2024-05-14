@@ -2,28 +2,38 @@
 let accessCookie = true
 
 window.onload = () => {
-    if (performance.getEntriesByType("navigation")[0].type === "navigate") {
-        localStorage.setItem('userAccess',"granted")
-    } else if (performance.getEntriesByType("navigation")[0].type !== "navigate"){
-        localStorage.setItem('userAccess',"denied")
+    if (getCookie("albumetteAccess") !== "granted"){
+        accessCookie = false
     }
 
-    if (accessCookie === false && localStorage.getItem('userAccess') === "denied"){
-        //the user's access has expired and that user's POE is NOT via NFC Card
-        console.log(accessCookie + localStorage.getItem('userAccess'))
-        document.getElementById("popup-notifications").style.height = "100%"
-    } else if (accessCookie === false && localStorage.getItem('userAccess') === "granted"){
-        //the user's access has expired but the user's POE is via NFC Card
-        setAccessCookie("albumetteAccess","granted",6)
-        console.log(accessCookie + localStorage.getItem('userAccess'))
-    } else if (accessCookie === true && localStorage.getItem('userAccess') === "denied"){ 
-        //the user's access has not expired but the user's POE is NOT via NFC Card
-        console.log(accessCookie + localStorage.getItem('userAccess'))
-    } else if (accessCookie === true && localStorage.getItem('userAccess') === "granted"){ 
-        //the user's access has not expired and the user's POE is via NFC Card
-        console.log(accessCookie + localStorage.getItem('userAccess'))
-        setAccessCookie("albumetteAccess","granted",6)
+    if (accessCookie === false){
+        setLocalSession()
+        clearInterval(cookieChecker)
+        if (localStorage.getItem('userAccess') === "granted"){
+            setAccessCookie("albumetteAccess","granted",6)
+            console.log(accessCookie + " " + localStorage.getItem('userAccess'))
+            console.log("user cookies have expired and the poe is via direct link")
+            //this means that the user's cookies expired but the user was able to tap their NFC card so their cookies are reset.
+        } else if (localStorage.getItem('userAccess') === "denied"){
+            document.getElementById("popup-notifications").style.height = "100%"
+            console.log(accessCookie + " " + localStorage.getItem('userAccess'))
+            console.log("user cookies have expired and the poe is NOT via direct link")
+            //this means that the user's cookies expired and the user was not able to tap their NFC card so their cookies are not reset.
+        }
+    } else {
+        setLocalSession()
+        if (localStorage.getItem('userAccess') === "granted"){
+            setAccessCookie("albumetteAccess","granted",6)
+            console.log(accessCookie + " " + localStorage.getItem('userAccess'))
+            console.log("user cookies have NOT expired and the poe is via direct link")
+            //this means that the user's cookies has not expired but the user was able to tap their NFC card so their cookies are reset.
+        } else if (localStorage.getItem('userAccess') === "denied"){
+            console.log(accessCookie + " " + localStorage.getItem('userAccess'))
+            console.log("user cookies have NOT expired and the poe is NOT via direct link")
+            //this means that the user's cookies has not expired but the user's POE is not via direct link.
+        }
     }
+
 }
 
 function setAccessCookie(name, value, minutes){
@@ -32,6 +42,14 @@ function setAccessCookie(name, value, minutes){
     let expirationDate = "expires=" + currDate.toUTCString()
     document.cookie = `${name}=${value}; ${expirationDate}; path=/`
     accessCookie = true
+}
+
+function setLocalSession(){
+    if (performance.getEntriesByType("navigation")[0].type === "navigate") {
+        localStorage.setItem('userAccess',"granted")
+    } else if (performance.getEntriesByType("navigation")[0].type !== "navigate"){
+        localStorage.setItem('userAccess',"denied")
+    }
 }
 
 function getCookie(name){
@@ -52,48 +70,80 @@ let cookieChecker = setInterval(() => {
     if (getCookie("albumetteAccess") !== "granted"){
         accessCookie = false
         document.getElementById("popup-notifications").style.height = "100%"
-        console.log(accessCookie + localStorage.getItem('userAccess'))
+        console.log(accessCookie + " " + localStorage.getItem('userAccess'))
         clearInterval(cookieChecker)
     }
 }, 1000)
 
+/* Music Player */
+let playPauseBtn = document.querySelector(".playpause-track")
+let currentTrack = document.getElementById("song")
+let trackProgress = document.getElementById("progress")
+let currentTime = document.querySelector(".current-time")
+let totalDuration = document.querySelector(".total-duration")
+let isPlaying = false
 
-/* Music Player Controls */
-let progress = document.getElementById("progress")
-let song = document.getElementById("song")
-let ctrlIcon = document.getElementById("ctrlIcon")
-
-song.onloadedmetadata = function(){
-    progress.max = song.duration;
-    progress.value = song.currentTime;
+currentTrack.onloadedmetadata = function(){
+    trackProgress.max = currentTrack.duration;
+    trackProgress.value = currentTrack.currentTime;
 }
 
-function playPause() {
-    if(ctrlIcon.classList.contains("play")){
-        song.play();
-        ctrlIcon.src = "svg/pause.svg"
-        ctrlIcon.classList.remove("play")
-        ctrlIcon.classList.add("pause")
-    } else {
-        song.pause();
-        ctrlIcon.src = "svg/play.svg"
-        ctrlIcon.classList.remove("pause")
-        ctrlIcon.classList.add("play")
-    }
+function playpauseTrack() {
+    isPlaying ? pauseTrack () : playTrack()
 }
 
-if(song.play()){
+function playTrack(){
+    currentTrack.play()
+    isPlaying = true
+    playPauseBtn.innerHTML = '<img class="play-icon-xl" src="svg/pause.svg">'
+}
+
+function pauseTrack(){
+    currentTrack.pause()
+    isPlaying = false
+    playPauseBtn.innerHTML = '<img class="play-icon-xl" src="svg/play.svg">'
+}
+
+if(currentTrack.play()){
     setInterval(()=>{
-        progress.value = song.currentTime
+        trackProgress.value = currentTrack.currentTime
+   
+        let currentMinutes = Math.floor(currentTrack.currentTime / 60)
+        let currentSeconds = Math.floor(currentTrack.currentTime - currentMinutes * 60)
+    
+        let durationMinutes = Math.floor(currentTrack.duration / 60)
+        let durationSeconds = Math.floor(currentTrack.duration - durationMinutes * 60)
+    
+        if (currentSeconds < 10){
+             currentSeconds = "0" + currentSeconds
+        }
+    
+        if (durationSeconds < 10){
+            durationSeconds = "0" + durationSeconds
+        }
+    
+        if (currentMinutes < 10){
+            currentMinutes = "0" + currentMinutes
+        }
+    
+        if (durationMinutes < 10){
+            durationMinutes = "0" + durationMinutes
+        }
+    
+        currentTime.textContent = currentMinutes + ":" + currentSeconds
+        totalDuration.textContent = durationMinutes + ":" + durationSeconds
     },300);
 }
 
-progress.onchange = function(){
-    song.play();
-    song.currentTime = progress.value
-    ctrlIcon.src = "svg/pause.svg"
-    ctrlIcon.classList.remove("play")
-    ctrlIcon.classList.add("pause")
+trackProgress.onchange = function(){
+    trackProgress.value = currentTrack.currentTime
+    playTrack()
+}
+
+trackProgress.onchange = function(){
+    currentTrack.play();
+    currentTrack.currentTime = trackProgress.value
+    playTrack()
 }
 
 /* Card Flip Animations */
